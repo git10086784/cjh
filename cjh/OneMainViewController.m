@@ -159,7 +159,7 @@ BOOL flag = true;
         EScrollerView *scrollview=[[EScrollerView alloc] initWithFrameRect:CGRectMake(0, 0, SCREEN_WIDTH, 150) ImageArray:imgarr TitleArray:nil];
         [view addSubview:scrollview];
         
-        pScrollView = [[OTPageView alloc] initWithFrame:CGRectMake(0, 150, SCREEN_WIDTH, 70)];
+        pScrollView = [[OTPageView alloc] initWithFrame:CGRectMake(0, 150, SCREEN_WIDTH, 90)];
         pScrollView.pageScrollView.dataSource = self;
         pScrollView.pageScrollView.delegate = self;
         pScrollView.pageScrollView.padding =10;
@@ -191,10 +191,10 @@ BOOL flag = true;
 }
 
 - (UIView*)pageScrollView:(OTPageScrollView*)pageScrollView viewForRowAtIndex:(int)index{
-    UIView *cell = [[UIView alloc] initWithFrame:CGRectMake(0, -5, 70, 70)];
+    UIView *cell = [[UIView alloc] initWithFrame:CGRectMake(0, 2, 70, 70)];
     cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
     ;
-    DBImageView *imageView = [[DBImageView alloc] initWithFrame:CGRectMake(0, -5, 70, 70)];
+    DBImageView *imageView = [[DBImageView alloc] initWithFrame:CGRectMake(0,2, 70, 70)];
     [imageView  setPlaceHolder:[UIImage imageNamed:@""]];
     [imageView setTag:index];
     //异步加载
