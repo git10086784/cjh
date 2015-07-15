@@ -12,6 +12,7 @@
 #import "EScrollerView.h"
 #import "SearchViewController.h"
 #import "onpagescrollview/OTPageView.h"
+#import "DBImageView.h"
 #define SEARCH_BAR_H 40
 @interface OneMainViewController (){
     UITableView     *table;
@@ -161,20 +162,20 @@ BOOL flag = true;
         pScrollView = [[OTPageView alloc] initWithFrame:CGRectMake(0, 150, SCREEN_WIDTH, 70)];
         pScrollView.pageScrollView.dataSource = self;
         pScrollView.pageScrollView.delegate = self;
-        pScrollView.pageScrollView.padding =50;
+        pScrollView.pageScrollView.padding =10;
         pScrollView.pageScrollView.leftRightOffset = 0;
-        pScrollView.pageScrollView.frame = CGRectMake(10, 10, SCREEN_WIDTH, 60);
-        pScrollView.backgroundColor = [UIColor colorWithRed:0.0f/255.0f green:139.0f/255.0f blue:139.0f/255.0f alpha:1.0f];
+        pScrollView.pageScrollView.frame = CGRectMake(10, 10, SCREEN_WIDTH, 70);
+        pScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         dataArray = [NSArray arrayWithObjects:
-                      @"",
-                      @"",
-                      @"",
-                      @"",
-                      @"",
-                      @"",
-                      @"",
-                      @"",
-                      @"",
+                      @"http://img0.bdstatic.com/img/image/shouye/tpmlmxab001.jpg",
+                      @"http://img0.bdstatic.com/img/image/shouye/qdwzmx002.jpg",
+                      @"http://img0.bdstatic.com/img/image/shouye/huabianwl003.jpg",
+                      @"http://img0.bdstatic.com/img/image/shouye/tpmlmxzs004.jpg",
+                      @"http://img0.bdstatic.com/img/image/shouye/huabianwl005.jpg",
+                      @"http://img0.bdstatic.com/img/image/shouye/qdmmx06.jpg",
+                      @"http://img0.bdstatic.com/img/image/shouye/tpmlmxqd07.jpg",
+                      @"http://img0.bdstatic.com/img/image/shouye/huabianwl003.jpg",
+                      @"http://img0.bdstatic.com/img/image/shouye/tpmlmxzs004.jpg",
                       @"",nil];
         [pScrollView.pageScrollView reloadData];
         [view addSubview:pScrollView];
@@ -190,12 +191,15 @@ BOOL flag = true;
 }
 
 - (UIView*)pageScrollView:(OTPageScrollView*)pageScrollView viewForRowAtIndex:(int)index{
-    UIView *cell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
-    cell.backgroundColor = [UIColor colorWithRed:191.0f/255.0f green:239.0f/255.0f blue:255.0f/255.0f alpha:1.0f];
+    UIView *cell = [[UIView alloc] initWithFrame:CGRectMake(0, -5, 70, 70)];
+    cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
     ;
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, cell.frame.size.width-40, cell.frame.size.height - 40)];
-    label.text = dataArray[index];
-    [cell addSubview:label];
+    DBImageView *imageView = [[DBImageView alloc] initWithFrame:CGRectMake(0, -5, 70, 70)];
+    [imageView  setPlaceHolder:[UIImage imageNamed:@""]];
+    [imageView setTag:index];
+    //异步加载
+    [imageView  setImageWithPath:dataArray[index]];
+    [cell addSubview:imageView];
     return cell;
 }
 
