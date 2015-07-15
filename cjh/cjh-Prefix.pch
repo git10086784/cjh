@@ -1,0 +1,44 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+
+//全局常量
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height-20
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define RGBColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define SYS_MAIN_COLOR_NORMAL RGBColor(2550, 92.0, 133.0)
+#define SYS_TEXT_COLOR [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f]
+#define CELL_H 50 //tableview 的cell的高度
+#define IS_IOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+#define IS_IOS8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8)
+#define LOGIN_NAME @"login_name"
+#define PASS_WORD @"pass_word"
+#define TEXT_FIELD_HEIGHT 40
+//全局菜单
+#define tabbarTitleArray [[NSArray alloc]initWithObjects:@"最新",@"分类", @"消息", @"我的",nil]
+#define tabbarImageArray [[NSArray alloc] initWithObjects:@"help.png",@"help.png", @"help.png",@"help.png", nil]
+#define tabbarImageBlueArray [[NSArray alloc] initWithObjects:@"yalehelp.png",@"yalehelp.png", @"yalehelp.png",@"yalehelp.png",nil]
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+#import "SBJsonParser.h"
+#import "UIView+LZ.h"
+#import "MBProgressHUD.h"
+#import "MKNetworkKit.h"
+#import "BaseViewController.h"
+#import "JSNotifier.h"
+#import "DXAlertView.h"
+#import "MyTableViewCell.h"
+#import "UINavigationItem+CustomItem.h"
+#endif
